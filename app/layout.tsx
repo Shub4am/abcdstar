@@ -1,6 +1,7 @@
+import Sidebar from '@/components/Sidebar';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Poppins, Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
 const font = Poppins({ weight: ['200', '400', '600'], subsets: ['latin'] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Sidebar>{children}</Sidebar>
+      </body>
     </html>
   );
 }
