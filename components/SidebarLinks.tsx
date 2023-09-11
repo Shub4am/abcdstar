@@ -33,7 +33,7 @@ const SidebarLinks: React.FC<SidebarLinksProps> = ({
             font-semibold
             cursor-pointer
             hover:text-white
-            text-neutral-400
+            text-neutral-300
             px-5
             py-2
             hover:scale-110

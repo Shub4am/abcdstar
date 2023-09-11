@@ -71,12 +71,16 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     <div
       className="
         hidden
+        absolute
+        top-0
+        left-0
+        z-10
         sm:flex
         flex-row
         bg-transparent
         gap-y-3
         h-full
-        w-40
+        w-36
       "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -88,7 +92,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           ))}
         </div>
       </SidebarBox>
-      <main className="h-full flex-1  py-2">{children}</main>
+      <main className="h-full flex-1 py-2">{children}</main>
     </div>
   );
 };
