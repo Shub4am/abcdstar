@@ -1,8 +1,12 @@
-import Sidebar from '@/components/Sidebar';
+import React from 'react';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+
+import { MoviesProvider } from '@/providers/MoviesProvider';
+import Sidebar from '@/components/Sidebar';
 import MovieBanner from '@/components/MovieBanner';
+import MoviesList from '@/components/MoviesList';
 
 const font = Poppins({ weight: ['200', '400', '600'], subsets: ['latin'] });
 
@@ -19,8 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Sidebar>{children}</Sidebar>
-        <MovieBanner />
+        <MoviesProvider>
+          <Sidebar>{children}</Sidebar>
+          <MovieBanner />
+          <MoviesList title="Latest Releases" />
+        </MoviesProvider>
       </body>
     </html>
   );
