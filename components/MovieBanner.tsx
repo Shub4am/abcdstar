@@ -1,36 +1,24 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import supabase from '@/config/supabaseClient';
 
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlinePlus } from 'react-icons/ai';
 import BannerCards from './BannerCards';
-import { Movie } from '@/types';
+import { useMovieData } from '@/hooks/useMovieData';
 
 const MovieBanner = () => {
-  const [billboardMovies, setBillboardMovies] = useState<Movie[]>([]);
-  const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
+  const { movieData, currentMovieIndex, nextMovie } = useMovieData();
 
   useEffect(() => {
-    async function fetchBillboardMovies() {
-      try {
-        const { data, error } = await supabase.from('movies').select('*');
+    //Switches to next movie every 20 seconds
+    const interval = setInterval(() => {
+      nextMovie();
+    }, 20000); //20 seconds
 
-        if (error) {
-          throw error;
-        }
+    return () => clearInterval(interval);
+  }, [currentMovieIndex, nextMovie]);
 
-        setBillboardMovies(data);
-
-        if (data.length > 0) {
-          setCurrentMovie(data[3]);
-        }
-      } catch (error) {
-        console.error('Error fetching movie data:', error);
-      }
-    }
-    fetchBillboardMovies();
-  }, []);
+  const currentMovie = movieData[currentMovieIndex];
 
   return (
     <div className="relative h-[56.25vw]">
@@ -119,7 +107,7 @@ const MovieBanner = () => {
               </button>
             </div>
           </div>
-          <BannerCards movies={billboardMovies} />
+          <BannerCards movies={movieData} />
         </>
       )}
     </div>
