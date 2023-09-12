@@ -71,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     <div
       className="
         hidden
-        absolute
+        fixed
         top-0
         left-0
         z-10
@@ -92,7 +92,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           ))}
         </div>
       </SidebarBox>
-      <main className="h-full flex-1 py-2">{children}</main>
+      <main className="h-full flex-1  py-2">{children}</main>
     </div>
   );
 };
