@@ -7,6 +7,7 @@ import { MoviesProvider } from '@/providers/MoviesProvider';
 import Sidebar from '@/components/Sidebar';
 import MovieBanner from '@/components/MovieBanner';
 import MoviesList from '@/components/MoviesList';
+import Footer from '@/components/Footer';
 
 const font = Poppins({ weight: ['200', '400', '600'], subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Sidebar>{children}</Sidebar>
           <MovieBanner />
           <MoviesList title="Latest Releases" />
+          <Footer />
         </MoviesProvider>
       </body>
     </html>
