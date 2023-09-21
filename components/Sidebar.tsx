@@ -29,19 +29,20 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   const routes = useMemo(
     () => [
       {
-        icon: GoHome,
-        label: 'Home',
-        active: pathName !== 'Search',
-        href: '/',
-        isHovered: isHovered,
-      },
-      {
         icon: BiSearch,
         label: 'Search',
         active: pathName === 'Search',
         href: '/search',
         isHovered: isHovered,
       },
+      {
+        icon: GoHome,
+        label: 'Home',
+        active: pathName !== 'Search',
+        href: '/',
+        isHovered: isHovered,
+      },
+
       {
         icon: PiTelevisionSimpleLight,
         label: 'TV',
@@ -80,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         bg-transparent
         gap-y-3
         h-full
-        w-36
+        w-32
       "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -92,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           ))}
         </div>
       </SidebarBox>
-      <main className="h-full flex-1  py-2">{children}</main>
+      <main className="h-full flex-1 py-2">{children}</main>
     </div>
   );
 };
