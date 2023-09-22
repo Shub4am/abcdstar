@@ -7,7 +7,7 @@ import { BiLogoPlayStore } from 'react-icons/bi';
 
 const Footer = () => {
   return (
-    <div className="container flex flex-col h-fit w-[90%] ml-24 px-4 mt-2 mb-10">
+    <div className="container flex flex-col h-fit w-[90%] ml-24 px-4 mt-2 mb-10 select-none">
       <div className=" flex flex-col sm:flex-row justify-center sm:justify-between items-center ">
         <div className="flex flex-col items-center justify-center sm:items-start pb-4 sm:pb-0">
           <p className="font-semibold capitalize pb-2 sm:pb-5">company</p>

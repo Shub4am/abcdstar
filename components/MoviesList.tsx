@@ -47,7 +47,7 @@ const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
             alt={movie.title || 'Movie Title'}
             width={90}
             height={120}
-            className="rounded-lg object-cover w-[90px] h-[120px] md:w-[150px] md:h-[200px]"
+            className="rounded-lg object-cover w-[90px] h-[120px] md:w-[150px] md:h-[200px] brightness-[.8]"
           />
         </div>
       </div>
@@ -55,13 +55,13 @@ const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
   };
 
   return (
-    <div className="pl-28 pr-5 mt-2 py-2 mb-10">
+    <div className="pl-28 pr-5 mt-2 py-2 mb-10 select-none">
       <div className="font-semibold text-xl">
         <p className="pb-2">{title}</p>
         <div className="flex overflow-x-hidden relative items-center ">
           <AiOutlineLeft
             size={40}
-            className="absolute text-white cursor-pointer left-3 hover:backdrop-blur-md hover:rounded-full"
+            className="absolute text-white cursor-pointer left-3 hover:backdrop-blur-md hover:rounded-full z-40"
             onClick={handleScrollLeft}
           />
           <div

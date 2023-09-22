@@ -21,7 +21,7 @@ const MovieBanner = () => {
   const currentMovie = movieData[currentMovieIndex];
 
   return (
-    <div className="relative h-[56.25vw]">
+    <div className="relative h-[56.25vw]  select-none">
       {currentMovie && (
         <>
           <video
