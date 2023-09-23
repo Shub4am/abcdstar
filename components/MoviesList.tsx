@@ -3,14 +3,13 @@ import React, { useRef } from 'react';
 import { useMoviesContext } from '@/providers/MoviesProvider';
 import Image from 'next/image';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import MovieListCard from './MovieListCard';
 
 interface MoviesListProps {
   title: string;
 }
 
 const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
-  const { movieData } = useMoviesContext();
-
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const handleScrollLeft = () => {
@@ -22,36 +21,6 @@ const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += 300;
     }
-  };
-
-  const MovieListCard = () => {
-    return movieData?.map((movie) => (
-      <div key={movie.id}>
-        <div
-          className="
-          group  
-          bg-zinc-800 
-          flex 
-          items-center
-          justify-center
-          text-center
-          w-[90px] md:w-[150px] 
-          h-[120px] md:h-[200px] 
-          rounded-lg
-          "
-        >
-          <Image
-            loading="lazy"
-            unoptimized
-            src={movie.thumbnail_url || ''}
-            alt={movie.title || 'Movie Title'}
-            width={90}
-            height={120}
-            className="rounded-lg object-cover w-[90px] h-[120px] md:w-[150px] md:h-[200px] brightness-[.8]"
-          />
-        </div>
-      </div>
-    ));
   };
 
   return (
