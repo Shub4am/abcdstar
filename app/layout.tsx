@@ -3,12 +3,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
-import { MoviesProvider } from '@/providers/MoviesProvider';
-import Sidebar from '@/components/Sidebar';
-import MovieBanner from '@/components/MovieBanner';
-import MoviesList from '@/components/MoviesList';
-import Footer from '@/components/Footer';
-
 const font = Poppins({ weight: ['200', '400', '600'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -23,14 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>
-        <MoviesProvider>
-          <Sidebar>{children}</Sidebar>
-          <MovieBanner />
-          <MoviesList title="Latest Releases" />
-          <Footer />
-        </MoviesProvider>
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
