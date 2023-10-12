@@ -1,13 +1,13 @@
 'use client';
 import React, { useState, FC } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { Movie } from '@/types';
 import { useMoviesContext } from '@/providers/MoviesProvider';
 
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsFillPlayFill } from 'react-icons/bs';
+import { useRoutes } from '@/hooks/useRoutes';
 
 interface CardsProps {
   title: string;
@@ -17,7 +17,7 @@ const Cards: FC<CardsProps> = ({ title }) => {
   const { movieData } = useMoviesContext();
   const [hoveredMovie, setHoveredMovie] = useState<Movie | null>(null);
 
-  const router = useRouter();
+  const { handleRouting } = useRoutes();
 
   const handleMouseEnter = (movie: Movie) => {
     setHoveredMovie(movie);
@@ -25,10 +25,6 @@ const Cards: FC<CardsProps> = ({ title }) => {
 
   const handleMouseLeave = () => {
     setHoveredMovie(null);
-  };
-
-  const handleBtnClick = (movie: Movie) => {
-    router.push(`/${movie.id}`);
   };
 
   return (
@@ -109,7 +105,7 @@ const Cards: FC<CardsProps> = ({ title }) => {
                     "
                   >
                     <button
-                      onClick={() => handleBtnClick(movie)}
+                      onClick={() => handleRouting(movie)}
                       className="
                       w-4/5
                       p-1

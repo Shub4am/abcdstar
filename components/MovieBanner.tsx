@@ -5,9 +5,12 @@ import { FaPlay } from 'react-icons/fa';
 import { AiOutlinePlus } from 'react-icons/ai';
 import BannerCards from './BannerCards';
 import { useMovieData } from '@/hooks/useMovieData';
+import { useRoutes } from '@/hooks/useRoutes';
 
 const MovieBanner = () => {
   const { movieData, currentMovieIndex, nextMovie } = useMovieData();
+
+  const { handleRouting } = useRoutes();
 
   useEffect(() => {
     //Switches to next movie every 20 seconds
@@ -39,8 +42,7 @@ const MovieBanner = () => {
               {currentMovie.title}
             </p>
             <div className="flex gap-x-4 p-2">
-              <p>{currentMovie.year}</p>
-              <p>{currentMovie.genre}</p>
+              <p>{currentMovie.year}</p>•<p>{currentMovie.genre}</p>•
               <p>{currentMovie.duration}</p>
             </div>
             <p className="hidden lg:flex lg:w-[50%] drop-shadow-xl mt-3">
@@ -59,6 +61,7 @@ const MovieBanner = () => {
                 "
             >
               <button
+                onClick={() => handleRouting(currentMovie)}
                 className="
                 text-white
                 px-3

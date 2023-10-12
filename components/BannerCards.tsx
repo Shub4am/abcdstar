@@ -1,14 +1,18 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 
 import { Movie } from '@/types';
+import { useRouter } from 'next/navigation';
+import { useRoutes } from '@/hooks/useRoutes';
 
 interface BannerCardsProps {
   movies: Movie[];
 }
 
-const BannerCards: React.FC<BannerCardsProps> = ({ movies }) => {
+const BannerCards: FC<BannerCardsProps> = ({ movies }) => {
+  const { handleRouting } = useRoutes();
+
   return (
     <div className="absolute right-0 md:right-10 top-[60%] lg:top-[48%] mt-4">
       <div className="flex flex-row gap-2  cursor-pointer ">
@@ -22,6 +26,7 @@ const BannerCards: React.FC<BannerCardsProps> = ({ movies }) => {
               alt={movie.title || 'Movie Title'}
               layout="fill"
               className="rounded-lg object-cover hover:scale-110"
+              onClick={() => handleRouting(movie)}
             />
           </div>
         ))}
