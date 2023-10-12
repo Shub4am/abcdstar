@@ -1,7 +1,5 @@
 'use client';
 import React, { useRef } from 'react';
-import { useMoviesContext } from '@/providers/MoviesProvider';
-import Image from 'next/image';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import MovieListCard from './MovieListCard';
 
@@ -24,7 +22,7 @@ const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
   };
 
   return (
-    <div className="pl-28 pr-5 mt-2 py-2 mb-10 select-none">
+    <div className="pl-28 pr-5 mt-2 py-2 mb-4 select-none">
       <div className="font-semibold text-xl">
         <p className="pb-2">{title}</p>
         <div className="flex overflow-x-hidden relative items-center ">
@@ -37,7 +35,6 @@ const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
             className="flex space-x-2 overflow-x-hidden scroll-smooth "
             ref={scrollRef}
           >
-            <MovieListCard />
             <MovieListCard />
             <MovieListCard />
             <MovieListCard />
