@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import { IconType } from 'react-icons';
 import { twMerge } from 'tailwind-merge';
 
@@ -11,7 +11,7 @@ interface SidebarLinksProps {
   isHovered: boolean;
 }
 
-const SidebarLinks: React.FC<SidebarLinksProps> = ({
+const SidebarLinks: FC<SidebarLinksProps> = ({
   icon: Icon,
   label,
   active,
@@ -23,24 +23,24 @@ const SidebarLinks: React.FC<SidebarLinksProps> = ({
       href={href}
       className={twMerge(
         `
-            flex
-            flex-row
-            h-auto
-            w-full
-            items-center
-            gap-x-4
-            text-md
-            font-semibold
-            cursor-pointer
-            hover:text-white
-            text-neutral-500
-            px-5
-            py-2
-            hover:scale-110
-            transition
-            duration-100
-            ease-in-out
-            `,
+          flex
+          flex-row
+          h-auto
+          w-full
+          items-center
+          gap-x-4
+          text-md
+          font-semibold
+          cursor-pointer
+          hover:text-white
+          text-neutral-500
+          pl-5
+          py-2
+          hover:scale-110
+          transition
+          duration-100
+          ease-in-out
+        `,
         active && 'text-white'
       )}
     >

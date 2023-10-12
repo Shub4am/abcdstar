@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import SidebarBox from './SidebarBox';
@@ -9,12 +9,13 @@ import SidebarLinks from './SidebarLinks';
 import { GoHome } from 'react-icons/go';
 import { PiTelevisionSimpleLight } from 'react-icons/pi';
 import { BiSearch, BiMoviePlay, BiFootball } from 'react-icons/bi';
+import { AiOutlineUser } from 'react-icons/ai';
 
 interface SidebarProps {
   children: React.ReactNode;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: FC<SidebarProps> = ({ children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const pathName = usePathname();
 
@@ -28,6 +29,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
 
   const routes = useMemo(
     () => [
+      {
+        icon: AiOutlineUser,
+        label: 'User',
+        active: pathName === 'User',
+        href: '/',
+        isHovered: isHovered,
+      },
       {
         icon: BiSearch,
         label: 'Search',
@@ -81,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         bg-transparent
         gap-y-3
         h-full
-        w-32
+        w-36
       "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

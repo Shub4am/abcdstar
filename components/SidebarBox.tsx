@@ -11,10 +11,10 @@ const SidebarBox: React.FC<SidebarBoxProps> = ({ children, className }) => {
     <div
       className={twMerge(
         `
-            rounded-lg 
-            h-full
-            w-full
-            p-2
+          rounded-lg 
+          h-full
+          w-full
+          p-2
         `,
         className
       )}
