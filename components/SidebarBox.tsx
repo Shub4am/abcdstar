@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface SidebarBoxProps {
@@ -6,7 +6,7 @@ interface SidebarBoxProps {
   className?: string;
 }
 
-const SidebarBox: React.FC<SidebarBoxProps> = ({ children, className }) => {
+const SidebarBox: FC<SidebarBoxProps> = ({ children, className }) => {
   return (
     <div
       className={twMerge(

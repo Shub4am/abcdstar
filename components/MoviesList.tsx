@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { FC, useRef } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import MovieListCard from './MovieListCard';
 
@@ -7,7 +7,7 @@ interface MoviesListProps {
   title: string;
 }
 
-const MoviesList: React.FC<MoviesListProps> = ({ title }) => {
+const MoviesList: FC<MoviesListProps> = ({ title }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const handleScrollLeft = () => {

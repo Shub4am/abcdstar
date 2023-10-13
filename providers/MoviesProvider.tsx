@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext } from 'react';
+import React, { FC, createContext, useContext } from 'react';
 import { Movie } from '@/types';
 import { useMovieData } from '@/hooks/useMovieData';
 
@@ -11,7 +11,7 @@ const MoviesContext = createContext<{ movieData: Movie[] | null } | undefined>(
   undefined
 );
 
-export const MoviesProvider: React.FC<MoviesProviderProps> = ({ children }) => {
+export const MoviesProvider: FC<MoviesProviderProps> = ({ children }) => {
   const { movieData } = useMovieData();
 
   return (
