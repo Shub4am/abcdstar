@@ -13,7 +13,7 @@ const BannerCards: FC<BannerCardsProps> = ({ movies }) => {
   const { handleRouting } = useRoutes();
 
   return (
-    <div className="absolute right-0 md:right-10 top-[60%] lg:top-[48%] mt-4">
+    <div className="absolute right-0 md:right-10 bottom-[20%] lg:bottom-[35%] mt-4">
       <div className="flex flex-row gap-2  cursor-pointer ">
         {movies.slice(0, 4).map((movie) => (
           <div
