@@ -24,11 +24,11 @@ const MovieBanner = () => {
   const currentMovie = movieData[currentMovieIndex];
 
   return (
-    <div className="relative h-[56.25vw]  select-none">
+    <div className="relative h-screen select-none mb-5">
       {currentMovie && (
         <>
           <video
-            className=" h-[56.25vw] w-full object-cover brightness-[40%] absolute"
+            className=" h-screen w-full object-cover brightness-[40%] absolute"
             autoPlay
             muted
             loop
@@ -86,11 +86,12 @@ const MovieBanner = () => {
                 <FaPlay size={16} />
                 Watch Now
               </button>
+
               <button
                 className="
                 text-white
-                px-3
-                py-3
+                px-4
+                py-4
                 text-sm lg:text-xl
                 font-semibold
                 flex 
@@ -105,8 +106,9 @@ const MovieBanner = () => {
                 hover:scale-105
                 cursor-pointer
                 "
+                title="Watchlist"
               >
-                <AiOutlinePlus size={28} />
+                <AiOutlinePlus />
               </button>
             </div>
           </div>
