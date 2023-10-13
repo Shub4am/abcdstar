@@ -5,7 +5,7 @@ import { Movie } from '@/types';
 
 import { BiArrowBack } from 'react-icons/bi';
 import { useRouter } from 'next/navigation';
-import { BsChatSquareText, BsPlayBtn } from 'react-icons/bs';
+import { BsPlayBtn } from 'react-icons/bs';
 import { HiOutlineChatBubbleBottomCenterText } from 'react-icons/hi2';
 
 interface MovieIdPageProps {
@@ -69,12 +69,11 @@ const WatchMovie = ({ params }: MovieIdPageProps) => {
       </nav>
 
       {isLoading ? (
-        <p>Watching Now...</p>
+        <p>Loading...</p>
       ) : (
         matchedMovie && (
           <>
             <p>
-              movie:
               {(matchedMovie && matchedMovie.title) || 'No title available'}
             </p>
             <video
