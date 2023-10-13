@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 
 import { Movie } from '@/types';
-import { useRouter } from 'next/navigation';
 import { useRoutes } from '@/hooks/useRoutes';
 
 interface BannerCardsProps {
@@ -19,14 +18,16 @@ const BannerCards: FC<BannerCardsProps> = ({ movies }) => {
         {movies.slice(0, 4).map((movie) => (
           <div
             key={movie.id}
-            className="group  bg-zinc-800 relative w-14 h-10 md:w-[90px] md:h-[51px] rounded-lg"
+            className="group bg-zinc-800 relative w-20 h-10 md:w-24 md:h-14 rounded-lg"
           >
             <Image
+              onClick={() => handleRouting(movie)}
+              unoptimized
               src={movie.thumbnail_url || ''}
               alt={movie.title || 'Movie Title'}
-              layout="fill"
-              className="rounded-lg object-cover hover:scale-110"
-              onClick={() => handleRouting(movie)}
+              width={96}
+              height={56}
+              className="w-20 h-10 md:w-24 md:h-14 rounded-lg object-cover hover:scale-110"
             />
           </div>
         ))}
