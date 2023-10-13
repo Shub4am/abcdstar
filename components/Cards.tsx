@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 import { Movie } from '@/types';
 import { useMoviesContext } from '@/providers/MoviesProvider';
+import { useRoutes } from '@/hooks/useRoutes';
 
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsFillPlayFill } from 'react-icons/bs';
-import { useRoutes } from '@/hooks/useRoutes';
 
 interface CardsProps {
   title: string;
@@ -16,33 +16,41 @@ interface CardsProps {
 const Cards: FC<CardsProps> = ({ title }) => {
   const { movieData } = useMoviesContext();
   const [hoveredMovie, setHoveredMovie] = useState<Movie | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const { handleRouting } = useRoutes();
 
   const handleMouseEnter = (movie: Movie) => {
-    setHoveredMovie(movie);
+    const timeoutId = setTimeout(() => {
+      setHoveredMovie(movie);
+    }, 500);
+    setHoverTimeout(timeoutId);
   };
 
   const handleMouseLeave = () => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+    }
     setHoveredMovie(null);
   };
 
   return (
     <div className="pl-28 pr-5 py-2 mb-10 select-none">
-      <p className="font-semibold text-xl">{title}</p>
+      <p className="font-semibold text-xl pb-2">{title}</p>
       <div className="relative flex gap-x-2">
         {movieData?.map((movie) => (
           <div
             key={movie.id}
-            className="
-              flex 
-              relative 
-              hover:scale-[1.7]
-              hover:-translate-y-6
-              hover:z-20
-              hover:opacity-100
+            className={`
+              flex
+              relative
               transition
-            "
+              ${
+                hoveredMovie === movie
+                  ? 'scale-[1.8] -translate-y-6 z-20 opacity-100'
+                  : ''
+              }
+            `}
             onMouseEnter={() => handleMouseEnter(movie)}
             onMouseLeave={handleMouseLeave}
           >
@@ -107,34 +115,36 @@ const Cards: FC<CardsProps> = ({ title }) => {
                     <button
                       onClick={() => handleRouting(movie)}
                       className="
-                      w-4/5
-                      p-1
+                      w-[85%]
+                      p-[6px]
                       bg-slate-200 
-                      self-center
                       text-zinc-900
-                      font-medium
-                      text-sm
+                      font-semibold
+                      text-[8px]
                       rounded-md
+                      gap-x-1
                       flex
+                      text-center
                       items-center
                       justify-center
                       hover:shadow-lg
                       hover:shadow-blue-950
                     "
                     >
-                      <BsFillPlayFill />
+                      <BsFillPlayFill size={10} />
                       Watch Now
                     </button>
-                    <span
+                    <button
                       className="
-                        bg-gray-700
+                        bg-zinc-800
                         rounded-md
-                        p-[5px]
+                        p-1
                         hover:scale-105
                       "
+                      title="Watchlist"
                     >
                       <AiOutlinePlus />
-                    </span>
+                    </button>
                   </div>
 
                   {/* year genre duration */}
