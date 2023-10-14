@@ -6,6 +6,9 @@ export const useRoutes = () => {
   const handleRouting = (movie: Movie) => {
     router.push(`/${movie.id}`);
   };
+  const handleBackBtn = () => {
+    router.push('/');
+  };
 
-  return { handleRouting };
+  return { handleRouting, handleBackBtn };
 };
