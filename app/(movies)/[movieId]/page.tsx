@@ -2,13 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useMoviesContext } from '@/providers/MoviesProvider';
 import { Movie } from '@/types';
-import { useRouter } from 'next/navigation';
 
 import { BiArrowBack } from 'react-icons/bi';
 import { BsPlayBtn } from 'react-icons/bs';
 import { HiOutlineChatBubbleBottomCenterText } from 'react-icons/hi2';
 import { useRoutes } from '@/hooks/useRoutes';
-import Error from './error';
 
 interface MovieIdPageProps {
   params: {
