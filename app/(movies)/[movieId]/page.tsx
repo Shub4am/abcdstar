@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { useMoviesContext } from '@/providers/MoviesProvider';
 import { Movie } from '@/types';
+import { useRouter } from 'next/navigation';
 
 import { BiArrowBack } from 'react-icons/bi';
-import { useRouter } from 'next/navigation';
 import { BsPlayBtn } from 'react-icons/bs';
 import { HiOutlineChatBubbleBottomCenterText } from 'react-icons/hi2';
+import { useRoutes } from '@/hooks/useRoutes';
 
 interface MovieIdPageProps {
   params: {
@@ -16,26 +17,18 @@ interface MovieIdPageProps {
 
 const WatchMovie = ({ params }: MovieIdPageProps) => {
   const { movieData } = useMoviesContext();
-
   const [matchedMovie, setMatchedMovie] = useState<Movie | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const router = useRouter();
+  const { handleBackBtn } = useRoutes();
   const movieIdToWatch = params.movieId;
 
   useEffect(() => {
     const matchId = movieData?.find((movie) => movie.id == movieIdToWatch);
     if (matchId) {
       setMatchedMovie(matchId);
-      setIsLoading(false);
     } else {
-      setIsLoading(false);
+      setMatchedMovie(null);
     }
   }, [movieData, movieIdToWatch]);
-
-  const handleBackBtn = () => {
-    router.push('/');
-  };
 
   const handleContextMenu = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -68,26 +61,20 @@ const WatchMovie = ({ params }: MovieIdPageProps) => {
         </div>
       </nav>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        matchedMovie && (
-          <>
-            <p>
-              {(matchedMovie && matchedMovie.title) || 'No title available'}
-            </p>
-            <video
-              className=" h-screen w-full object-cover absolute"
-              autoPlay
-              loop
-              controls
-              poster={matchedMovie.thumbnail_url || undefined}
-              src={matchedMovie.video_url || undefined}
-            >
-              Your browser does not support the video tag.
-            </video>
-          </>
-        )
+      {matchedMovie && (
+        <>
+          <p>{matchedMovie && matchedMovie.title}</p>
+          <video
+            className=" h-screen w-full object-cover absolute"
+            autoPlay
+            loop
+            controls
+            poster={matchedMovie.thumbnail_url || undefined}
+            src={matchedMovie.video_url || undefined}
+          >
+            Your browser does not support the video tag.
+          </video>
+        </>
       )}
     </div>
   );
