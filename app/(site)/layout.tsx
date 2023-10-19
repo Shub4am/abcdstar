@@ -19,7 +19,9 @@ export default function MainLayout({
         <Sidebar>{children}</Sidebar>
         <MovieBanner />
         <Cards title="Trending" />
-        <MoviesList title="Latest Releases" />
+        <Cards title="Coming Soon" />
+        <Cards title="XYZ Specials" />
+        <Cards title="Latest Releases" />
         <Footer />
       </MoviesProvider>
     </div>
