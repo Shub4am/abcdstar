@@ -7,7 +7,7 @@ import { useMoviesContext } from '@/providers/MoviesProvider';
 import { useRoutes } from '@/hooks/useRoutes';
 
 import { AiOutlinePlus } from 'react-icons/ai';
-import { BsFillPlayFill } from 'react-icons/bs';
+import { BsFillPlayFill, BsCheckLg } from 'react-icons/bs';
 
 interface CardsProps {
   title: string;
@@ -17,6 +17,8 @@ const Cards: FC<CardsProps> = ({ title }) => {
   const { movieData } = useMoviesContext();
   const [hoveredMovie, setHoveredMovie] = useState<Movie | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const [isLiked, setIsLiked] = useState(true);
 
   const { handleRouting } = useRoutes();
 
@@ -34,11 +36,15 @@ const Cards: FC<CardsProps> = ({ title }) => {
     setHoveredMovie(null);
   };
 
+  const toggleWatchlist = () => {
+    setIsLiked((prevState) => !prevState);
+  };
+
   return (
     <div className="pl-28 pr-5 py-2 mb-10 select-none">
       <p className="font-semibold text-xl pb-2">{title}</p>
       <div className="relative flex gap-x-2">
-        {movieData?.map((movie) => (
+        {movieData?.map((movie, index) => (
           <div
             key={movie.id}
             className={`
@@ -48,6 +54,11 @@ const Cards: FC<CardsProps> = ({ title }) => {
               ${
                 hoveredMovie === movie
                   ? 'scale-[1.8] -translate-y-6 z-20 opacity-100'
+                  : ''
+              }
+              ${
+                hoveredMovie === movie && index === movieData.length - 1
+                  ? 'hover:-translate-x-12'
                   : ''
               }
             `}
@@ -142,8 +153,13 @@ const Cards: FC<CardsProps> = ({ title }) => {
                         hover:scale-105
                       "
                       title="Watchlist"
+                      onClick={toggleWatchlist}
                     >
-                      <AiOutlinePlus />
+                      {isLiked ? (
+                        <AiOutlinePlus title="WatchList" />
+                      ) : (
+                        <BsCheckLg title="Added to WatchList" />
+                      )}
                     </button>
                   </div>
 
