@@ -68,7 +68,6 @@ const WatchMovie = ({ params }: MovieIdPageProps) => {
           <video
             className=" h-screen w-full object-cover absolute"
             autoPlay
-            loop
             controls
             poster={matchedMovie.thumbnail_url || undefined}
             src={matchedMovie.video_url || undefined}
