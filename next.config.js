@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
+      'm.media-amazon.com',
       'commondatastorage.googleapis.com',
       'upload.wikimedia.org',
       'mango.blender.org',
