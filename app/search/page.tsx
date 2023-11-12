@@ -65,7 +65,7 @@ export default function Search() {
                 alt={movie.title || 'Movie Title'}
                 width="0"
                 height="0"
-                className="w-64 h-40 rounded-lg cursor-pointer"
+                className="w-64 h-40 rounded-lg cursor-pointer object-cover"
               />
               <div className=" w-60 pl-4 pt-2 pb-2">
                 <p className="font-semibold pb-2">{movie.title}</p>
