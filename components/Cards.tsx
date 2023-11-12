@@ -70,8 +70,8 @@ const Cards: FC<CardsProps> = ({ title }) => {
               unoptimized
               src={movie.thumbnail_url || ''}
               alt={movie.title || 'Movie Title'}
-              width={90}
-              height={120}
+              width="0"
+              height="0"
               className="
                 rounded-lg
                 object-cover
