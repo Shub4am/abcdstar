@@ -51,25 +51,28 @@ export default function Search() {
           )}
         </form>
       </div>
-      <div className="flex flex-wrap pl-28  gap-4">
+      <div className="flex flex-wrap pl-28 gap-4">
         {inputValue && filteredSearchResults.length > 0 ? (
           filteredSearchResults.map((movie) => (
             <div
               key={movie.id}
-              className=" rounded-lg cursor-pointer hover:scale-110 hover:-translate-y-6 z-20 bg-hoverBg bg-opacity-0 hover:bg-opacity-75"
+              className="group rounded-lg cursor-pointer hover:scale-110 hover:-translate-y-6 z-20 bg-hoverBg bg-opacity-0 hover:bg-opacity-100"
             >
               <Image
                 onClick={() => handleRouting(movie)}
                 unoptimized
                 src={movie.thumbnail_url || ''}
                 alt={movie.title || 'Movie Title'}
-                width={256}
-                height={160}
+                width="0"
+                height="0"
                 className="w-64 h-40 rounded-lg cursor-pointer"
               />
-              <div className="w-60 pl-4 pt-2 pb-2">
+              <div className=" w-60 pl-4 pt-2 pb-2">
                 <p className="font-semibold pb-2">{movie.title}</p>
                 <p className="text-slate-400">{movie.year}</p>
+                <p className="opacity-0 group-hover:opacity-100 text-clip break-normal line-clamp-3 pt-1">
+                  {movie.description}
+                </p>
               </div>
             </div>
           ))
