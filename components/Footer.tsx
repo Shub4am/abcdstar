@@ -13,7 +13,7 @@ const Footer = () => {
           <p className="font-semibold capitalize pb-2 sm:pb-5">company</p>
           <ul className="flex flex-col text-gray-500 gap-2">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/about-us/in" className="hover:text-white">
                 About us
               </Link>
             </li>
