@@ -78,19 +78,7 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
 
   return (
     <div
-      className="
-        hidden
-        fixed
-        top-0
-        left-0
-        z-10
-        sm:flex
-        flex-row
-        bg-transparent
-        gap-y-3
-        h-full
-        w-36
-      "
+      className=" hidden fixed top-0 left-0 z-10 sm:flex flex-row bg-transparent gap-y-3 h-full w-36 "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

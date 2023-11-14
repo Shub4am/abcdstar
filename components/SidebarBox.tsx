@@ -8,17 +8,7 @@ interface SidebarBoxProps {
 
 const SidebarBox: FC<SidebarBoxProps> = ({ children, className }) => {
   return (
-    <div
-      className={twMerge(
-        `
-          rounded-lg 
-          h-full
-          w-full
-          p-2
-        `,
-        className
-      )}
-    >
+    <div className={twMerge(` rounded-lg h-full w-full p-2`, className)}>
       {children}
     </div>
   );

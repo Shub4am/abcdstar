@@ -47,10 +47,7 @@ const Cards: FC<CardsProps> = ({ title }) => {
         {movieData?.map((movie, index) => (
           <div
             key={movie.id}
-            className={`
-              flex
-              relative
-              transition
+            className={` flex relative transition
               ${
                 hoveredMovie === movie
                   ? 'scale-[1.8] -translate-y-6 z-20 opacity-100'
@@ -72,86 +69,23 @@ const Cards: FC<CardsProps> = ({ title }) => {
               alt={movie.title || 'Movie Title'}
               width="0"
               height="0"
-              className="
-                rounded-lg
-                object-cover
-                w-[90px]
-                h-[120px]
-                md:w-[150px]
-                md:h-[200px]
-                brightness-[.8]
-              "
+              className=" rounded-lg object-cover w-[90px] h-[120px] md:w-[150px] md:h-[200px] brightness-[.8] "
             />
 
             {/* Show card when movie is hovered */}
             {hoveredMovie === movie && (
-              <div
-                className="
-                  absolute 
-                  inset-0 
-                  z-40 
-                  g-transparent 
-                  text-center 
-                  flex 
-                  flex-col 
-                  items-center 
-                  justify-end 
-                  bg-opacity-25 
-                  rounded-lg 
-                  duration-300
-                  shadow-black
-                  shadow-xl
-                "
-              >
-                <div
-                  className="
-                    flex 
-                    flex-col 
-                    w-full 
-                    h-3/5 
-                    bg-hoverBg 
-                    rounded-b-md
-                    overflow-hidden
-                  "
-                >
-                  <div
-                    className="
-                      w-full
-                      p-1
-                      flex
-                      items-center
-                      gap-x-1
-                    "
-                  >
+              <div className="absolute inset-0 z-40 g-transparent text-center flex flex-col items-center justify-end bg-opacity-25 rounded-lg duration-300 shadow-black shadow-xl ">
+                <div className="flex flex-col w-full h-3/5 bg-hoverBg rounded-b-md overflow-hidden">
+                  <div className=" w-full p-1 flex items-center gap-x-1">
                     <button
                       onClick={() => handleRouting(movie)}
-                      className="
-                      w-[85%]
-                      p-[6px]
-                      bg-slate-200 
-                      text-zinc-900
-                      font-semibold
-                      text-[8px]
-                      rounded-md
-                      gap-x-1
-                      flex
-                      text-center
-                      items-center
-                      justify-center
-                      hover:shadow-lg
-                      hover:shadow-blue-950
-                    "
+                      className=" w-[85%] p-[6px] bg-slate-200  text-zinc-900 font-semibold text-[8px] rounded-md gap-x-1 flex text-center items-center justify-center hover:shadow-lg hover:shadow-blue-950"
                     >
                       <BsFillPlayFill size={10} />
                       Watch Now
                     </button>
                     <button
-                      className="
-                        bg-zinc-800
-                        rounded-md
-                        p-1
-                        hover:scale-105
-                      "
+                      className=" bg-zinc-800 rounded-md p-1 hover:scale-105"
                       title="Watchlist"
                       onClick={toggleWatchlist}
                     >

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -48,64 +48,17 @@ const MovieBanner = () => {
             <p className="hidden lg:flex lg:w-[50%] drop-shadow-xl mt-3">
               {currentMovie.description}
             </p>
-            <div
-              className="
-                flex 
-                flex-row 
-                items-center 
-                w-[70%]
-                sm:w-[90%]
-                lg:w-[50%]
-                mt-5 
-                gap-4
-                "
-            >
+            <div className="flex flex-row items-center w-[70%] sm:w-[90%] lg:w-[50%] mt-5 gap-4">
               <button
                 onClick={() => handleRouting(currentMovie)}
-                className="
-                text-white
-                px-3
-                py-3
-                text-sm lg:text-xl
-                font-semibold
-                flex 
-                flex-row
-                items-center
-                justify-center
-                gap-3
-                bg-gray-400 
-                bg-opacity-30
-                hover:bg-opacity-40
-                rounded-md
-                transition
-                hover:scale-105
-                cursor-pointer
-                w-[60%]
-              "
+                className=" text-white px-3 py-3 text-sm lg:text-xl font-semibold flex flex-row items-center justify-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition hover:scale-105 cursor-pointer w-[60%]"
               >
                 <FaPlay size={16} />
                 Watch Now
               </button>
 
               <button
-                className="
-                text-white
-                px-4
-                py-4
-                text-sm lg:text-xl
-                font-semibold
-                flex 
-                flex-row
-                items-center
-                gap-3
-                bg-gray-400 
-                bg-opacity-30
-                hover:bg-opacity-40
-                rounded-md
-                transition
-                hover:scale-105
-                cursor-pointer
-                "
+                className=" text-white px-4 py-4 text-sm lg:text-xl font-semibold flex flex-row items-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition hover:scale-105 cursor-pointer "
                 title="Watchlist"
               >
                 <AiOutlinePlus />
