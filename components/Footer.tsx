@@ -41,7 +41,7 @@ const Footer = () => {
           <p className="font-semibold capitalize pb-2 sm:pb-5 ">need help?</p>
           <ul className="flex flex-col text-gray-500 gap-2 ">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/support/in" className="hover:text-white">
                 Visit Help Center
               </Link>
             </li>
@@ -75,17 +75,17 @@ const Footer = () => {
           <p>© 2023 ABCD. All Rights Reserved.</p>
           <ul className="flex text-gray-500 gap-x-4">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/tnc/in" className="hover:text-white">
                 Terms Of use
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/privacy-policy/in" className="hover:text-white">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/support/in" className="hover:text-white">
                 FAQ
               </Link>
             </li>
