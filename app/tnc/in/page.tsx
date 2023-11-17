@@ -58,9 +58,8 @@ export default function Page() {
       <h2 className="font-semibold text-lg"> 5. Intellectual Property</h2>
       <p>
         5.1 Ownership: ABCD+ and its content, including but not limited to text,
-        graphics, logos, and software, are the property of [Your Company] and
-        are protected by copyright, trademark, and other intellectual property
-        laws.
+        graphics, logos, and software, are the property of ABCD+ and are
+        protected by copyright, trademark, and other intellectual property laws.
       </p>
       <p>
         5.2 License: We grant you a limited, non-exclusive, non-transferable,
@@ -86,9 +85,9 @@ export default function Page() {
 
       <h2 className="font-semibold text-lg"> 8. Disclaimer of Warranties</h2>
       <p>
-        [Your Company] provides the app &quot;as is&quot; and makes no
-        representations or warranties of any kind, whether express or implied,
-        regarding the app&quot;s availability, reliability, or functionality.
+        ABCD+ provides the app &quot;as is&quot; and makes no representations or
+        warranties of any kind, whether express or implied, regarding the
+        app&quot;s availability, reliability, or functionality.
       </p>
 
       <h2 className="font-semibold text-lg">9. Limitation of Liability</h2>
@@ -107,7 +106,7 @@ export default function Page() {
       <h2 className="font-semibold text-lg">11. Contact Information</h2>
       <p>
         If you have any questions or concerns about this Agreement, please
-        contact us at [Your Contact Email].
+        contact us at hello@notarealemail.com.
       </p>
       <p>
         By using ABCD+, you agree to these terms and conditions. Thank you for
