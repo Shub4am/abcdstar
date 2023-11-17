@@ -8,6 +8,7 @@ const nextConfig = {
       'mango.blender.org',
       'download.blender.org',
       'uhdtv.io',
+      'images.unsplash.com',
     ],
   },
 };
