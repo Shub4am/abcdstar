@@ -4,6 +4,7 @@ import { FiFacebook } from 'react-icons/fi';
 import { FaXTwitter } from 'react-icons/fa6';
 import { AiFillApple, AiOutlineCheck } from 'react-icons/ai';
 import { BiLogoPlayStore } from 'react-icons/bi';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/join-us/" className="hover:text-white">
                 Careers
               </Link>
             </li>
@@ -30,7 +31,7 @@ const Footer = () => {
           <ul className="text-gray-500 ">
             <li className="flex gap-2 ">
               <AiOutlineCheck className="self-center " />
-              <Link href="/" className="hover:text-white">
+              <Link href="#" className="hover:text-white">
                 English
               </Link>
             </li>
@@ -46,7 +47,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/support/in" className="hover:text-white">
                 Share Feedback
               </Link>
             </li>
@@ -57,12 +58,12 @@ const Footer = () => {
           <p className="font-semibold pb-2 sm:pb-5">Connect with Us</p>
           <ul className="flex text-white gap-2 items-center justify-around ">
             <li>
-              <Link href="/" className="hover:text-blue-600">
+              <Link href="/" className="hover:text-blue-600" title="Facebook">
                 <FiFacebook size={26} />
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-zinc-700">
+              <Link href="/" className="hover:text-zinc-700" title="Twitter">
                 <FaXTwitter size={26} />
               </Link>
             </li>
@@ -92,9 +93,23 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex gap-10 items-center ">
-          <BiLogoPlayStore size={30} className="cursor-pointer" />
-          <AiFillApple size={30} className="cursor-pointer" />
+        <div className="flex gap-2 items-center ">
+          <Image
+            unoptimized
+            src={'/google-play-badge.png'}
+            width="0"
+            height="0"
+            alt="google play store"
+            className="w-36 h-14 cursor-pointer"
+          />
+          <Image
+            unoptimized
+            src={'/apple-store-badge.png'}
+            width="0"
+            height="0"
+            alt="google play store"
+            className="w-36 h-10 cursor-pointer"
+          />
         </div>
       </div>
     </div>
