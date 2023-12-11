@@ -12,7 +12,7 @@ import { BiSearch, BiMoviePlay, BiFootball } from 'react-icons/bi';
 import { AiOutlineUser } from 'react-icons/ai';
 
 interface SidebarProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Sidebar: FC<SidebarProps> = ({ children }) => {
