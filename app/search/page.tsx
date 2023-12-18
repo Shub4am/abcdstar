@@ -1,17 +1,17 @@
-'use client';
-import { ChangeEvent, useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { ChangeEvent, useState } from "react";
+import Image from "next/image";
 
-import { useMovieData } from '@/hooks/useMovieData';
-import { useRoutes } from '@/hooks/useRoutes';
-import Cards from '@/components/Cards';
+import { useMovieData } from "@/hooks/useMovieData";
+import { useRoutes } from "@/hooks/useRoutes";
+import Cards from "@/components/Cards";
 
-import { BiErrorCircle, BiSearch } from 'react-icons/bi';
-import { RxCross2 } from 'react-icons/rx';
+import { BiErrorCircle, BiSearch } from "react-icons/bi";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Search() {
   const { movieData } = useMovieData();
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
   const [clearIconVisible, setClearIconVisible] = useState(false);
 
   const { handleRouting } = useRoutes();
@@ -22,12 +22,12 @@ export default function Search() {
   };
 
   const handleClearInput = () => {
-    setInputValue('');
+    setInputValue("");
     setClearIconVisible(false);
   };
 
-  const filteredSearchResults = movieData.filter((mov) =>
-    mov.title?.toLowerCase().includes(inputValue.toLowerCase())
+  const filteredSearchResults = movieData.filter(
+    (mov) => mov.title?.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   return (
@@ -41,6 +41,7 @@ export default function Search() {
             className=" w-full h-full px-10 bg-[#252833] outline-none placeholder-gray-400 focus:text-white font-medium text-xl rounded-md"
             value={inputValue}
             onChange={handleInputChange}
+            maxLength={30}
           />
           {clearIconVisible && (
             <RxCross2
@@ -61,8 +62,8 @@ export default function Search() {
               <Image
                 onClick={() => handleRouting(movie)}
                 unoptimized
-                src={movie.thumbnail_url || ''}
-                alt={movie.title || 'Movie Title'}
+                src={movie.thumbnail_url || ""}
+                alt={movie.title || "Movie Title"}
                 width="0"
                 height="0"
                 className="w-64 h-40 rounded-lg cursor-pointer object-cover"

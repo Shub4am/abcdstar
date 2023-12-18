@@ -66,7 +66,7 @@ export default function Page() {
       </p>
 
       <h2 className="font-semibold text-lg">
-        {' '}
+        {" "}
         7. Changes to this Privacy Policy
       </h2>
       <p>
@@ -75,7 +75,7 @@ export default function Page() {
       </p>
 
       <h2 className="font-semibold text-lg"> 8. Contact Us</h2>
-      <p>
+      <p className="pb-6">
         If you have questions or concerns about this Privacy Policy, please
         contact us at hello@notarealemail.com.
       </p>
