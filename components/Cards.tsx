@@ -1,13 +1,13 @@
-'use client';
-import React, { useState, FC } from 'react';
-import Image from 'next/image';
+"use client";
+import React, { useState, FC } from "react";
+import Image from "next/image";
 
-import { Movie } from '@/types';
-import { useMoviesContext } from '@/providers/MoviesProvider';
-import { useRoutes } from '@/hooks/useRoutes';
+import { Movie } from "@/types";
+import { useMoviesContext } from "@/providers/MoviesProvider";
+import { useRoutes } from "@/hooks/useRoutes";
 
-import { AiOutlinePlus } from 'react-icons/ai';
-import { BsFillPlayFill, BsCheckLg } from 'react-icons/bs';
+import { AiOutlinePlus } from "react-icons/ai";
+import { BsFillPlayFill, BsCheckLg } from "react-icons/bs";
 
 interface CardsProps {
   title: string;
@@ -15,12 +15,15 @@ interface CardsProps {
 
 const Cards: FC<CardsProps> = ({ title }) => {
   const { movieData } = useMoviesContext();
+
   const [hoveredMovie, setHoveredMovie] = useState<Movie | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const [isLiked, setIsLiked] = useState(true);
-
   const { handleRouting } = useRoutes();
+
+  const [addToWatchlist, setAddToWatchlist] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const handleMouseEnter = (movie: Movie) => {
     const timeoutId = setTimeout(() => {
@@ -36,8 +39,11 @@ const Cards: FC<CardsProps> = ({ title }) => {
     setHoveredMovie(null);
   };
 
-  const toggleWatchlist = () => {
-    setIsLiked((prevState) => !prevState);
+  const toggleWatchlist = (movie: Movie) => {
+    setAddToWatchlist((prevState) => {
+      const isLiked = !prevState[movie.id];
+      return { ...prevState, [movie.id]: isLiked };
+    });
   };
 
   return (
@@ -50,13 +56,13 @@ const Cards: FC<CardsProps> = ({ title }) => {
             className={` flex relative transition
               ${
                 hoveredMovie === movie
-                  ? 'scale-[1.8] -translate-y-6 z-20 opacity-100'
-                  : ''
+                  ? "scale-[1.8] -translate-y-6 z-20 opacity-100"
+                  : ""
               }
               ${
                 hoveredMovie === movie && index === movieData.length - 1
-                  ? 'hover:-translate-x-12'
-                  : ''
+                  ? "hover:-translate-x-12"
+                  : ""
               }
             `}
             onMouseEnter={() => handleMouseEnter(movie)}
@@ -65,8 +71,8 @@ const Cards: FC<CardsProps> = ({ title }) => {
             <Image
               loading="lazy"
               unoptimized
-              src={movie.thumbnail_url || ''}
-              alt={movie.title || 'Movie Title'}
+              src={movie.thumbnail_url || ""}
+              alt={movie.title || "Movie Title"}
               width="0"
               height="0"
               className=" rounded-lg object-cover w-[90px] h-[120px] md:w-[150px] md:h-[200px] brightness-[.8] "
@@ -87,9 +93,9 @@ const Cards: FC<CardsProps> = ({ title }) => {
                     <button
                       className=" bg-zinc-800 rounded-md p-1 hover:scale-105"
                       title="Watchlist"
-                      onClick={toggleWatchlist}
+                      onClick={() => toggleWatchlist(movie)}
                     >
-                      {isLiked ? (
+                      {!addToWatchlist[movie.id] ? (
                         <AiOutlinePlus title="WatchList" />
                       ) : (
                         <BsCheckLg title="Added to WatchList" />
