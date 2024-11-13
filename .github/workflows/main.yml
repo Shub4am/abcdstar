@@ -1,0 +1,14 @@
+name: main
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make a request to the Vercel website
+        run: |
+          curl -s https://abcdstar.vercel.app/2
