@@ -9,12 +9,16 @@ import Cards from "@/components/Cards";
 import { BiErrorCircle, BiSearch } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 
+import useDebounce from "@/hooks/useDebounce";
+
 export default function Search() {
   const { movieData } = useMovieData();
   const [inputValue, setInputValue] = useState<string>("");
   const [clearIconVisible, setClearIconVisible] = useState(false);
 
   const { handleRouting } = useRoutes();
+
+  const debounceSrchTerm = useDebounce(inputValue, 1000);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -26,8 +30,8 @@ export default function Search() {
     setClearIconVisible(false);
   };
 
-  const filteredSearchResults = movieData.filter(
-    (mov) => mov.title?.toLowerCase().includes(inputValue.toLowerCase()),
+  const filteredSearchResults = movieData.filter((mov) =>
+    mov.title?.toLowerCase().includes(debounceSrchTerm.toLowerCase())
   );
 
   return (
@@ -83,7 +87,7 @@ export default function Search() {
               <div className=" flex flex-col w-full items-center justify-center py-20">
                 <BiErrorCircle size={60} />
                 <p className="text-white font-semibold text-center">
-                  Could not find &quot;{inputValue}&quot;
+                  Could not find &quot;{debounceSrchTerm}&quot;
                 </p>
 
                 <p className="text-slate-400 font-semibold">
