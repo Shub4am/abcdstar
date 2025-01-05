@@ -1,12 +1,14 @@
-import Link from 'next/link';
-import React from 'react';
-import { FiFacebook } from 'react-icons/fi';
-import { FaXTwitter } from 'react-icons/fa6';
-import { AiFillApple, AiOutlineCheck } from 'react-icons/ai';
-import { BiLogoPlayStore } from 'react-icons/bi';
-import Image from 'next/image';
+import Link from "next/link";
+import React from "react";
+import { FiFacebook } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiFillApple, AiOutlineCheck } from "react-icons/ai";
+import { BiLogoPlayStore } from "react-icons/bi";
+import Image from "next/image";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <div className="container flex flex-col h-fit w-[90%] ml-24 px-4 mt-2 mb-10 select-none">
       <div className=" flex flex-col sm:flex-row justify-center sm:justify-between items-center ">
@@ -73,7 +75,7 @@ const Footer = () => {
 
       <div className="flex pt-10 justify-between">
         <div>
-          <p>© 2023 ABCD. All Rights Reserved.</p>
+          <p>© {year} ABCD. All Rights Reserved.</p>
           <ul className="flex text-gray-500 gap-x-4">
             <li>
               <Link href="/tnc/in" className="hover:text-white">
@@ -96,7 +98,7 @@ const Footer = () => {
         <div className="flex gap-2 items-center ">
           <Image
             unoptimized
-            src={'/google-play-badge.png'}
+            src={"/google-play-badge.png"}
             width="0"
             height="0"
             alt="google play store"
@@ -104,7 +106,7 @@ const Footer = () => {
           />
           <Image
             unoptimized
-            src={'/apple-store-badge.png'}
+            src={"/apple-store-badge.png"}
             width="0"
             height="0"
             alt="google play store"
