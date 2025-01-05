@@ -34,7 +34,7 @@ const MovieBanner = () => {
   const currentMovie = movieData[currentMovieIndex];
 
   return (
-    <div className="relative h-screen select-none mb-5">
+    <div className="relative h-[80vh] select-none mb-5">
       {isLoading ? (
         <Loading />
       ) : (
@@ -50,34 +50,40 @@ const MovieBanner = () => {
             >
               Your browser does not support the video tag.
             </video>
-            <div className="absolute top-1/4 ml-12 sm:ml-32 ">
-              <p className="h-full w-2/4 font-bold text-xl sm:text-3xl md:text-5xl drop-shadow-xl">
-                {currentMovie.title}
-              </p>
-              <div className="flex gap-x-4 p-2">
+            {/* Fix UI  */}
+            <div className="absolute top-[70%]  ml-12 sm:ml-32 flex flex-col gap-3">
+              <div className="w-full">
+                <p className="font-bold text-xl sm:text-3xl md:text-4xl drop-shadow-xl">
+                  {currentMovie.title}
+                </p>
+              </div>
+              <div className="flex gap-x-4 text-sm sm:text-base p-2">
                 <p>{currentMovie.year}</p>•<p>{currentMovie.genre}</p>•
                 <p>{currentMovie.duration}</p>
               </div>
-              <p className="hidden lg:flex lg:w-[50%] drop-shadow-xl mt-3">
-                {currentMovie.description}
-              </p>
-              <div className="flex flex-row items-center w-[70%] sm:w-[90%] lg:w-[50%] mt-5 gap-4">
+              <div className="hidden lg:block max-w-2xl">
+                <p className="text-sm sm:text-base drop-shadow-xl line-clamp-2">
+                  {currentMovie.description}
+                </p>
+              </div>
+              <div className="flex items-center justify-center gap-4 w-[400px]">
                 <button
                   onClick={() => handleRouting(currentMovie)}
-                  className=" text-white px-3 py-3 text-sm lg:text-xl font-semibold flex flex-row items-center justify-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition hover:scale-105 cursor-pointer w-[60%]"
+                  className="text-white px-4 py-3 text-sm lg:text-xl font-semibold flex items-center justify-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition-transform hover:scale-105 cursor-pointer w-[90%] text-center"
                 >
                   <FaPlay size={16} />
                   Watch Now
                 </button>
 
                 <button
-                  className=" text-white px-4 py-4 text-sm lg:text-xl font-semibold flex flex-row items-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition hover:scale-105 cursor-pointer "
+                  className="text-white px-4 py-4 text-sm lg:text-xl font-semibold flex items-center justify-center gap-3 bg-gray-400 bg-opacity-30 hover:bg-opacity-40 rounded-md transition-transform hover:scale-105 cursor-pointer"
                   title="Watchlist"
                 >
                   <AiOutlinePlus />
                 </button>
               </div>
             </div>
+
             <BannerCards movies={movieData} />
           </>
         )
