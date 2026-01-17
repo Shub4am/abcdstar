@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "encoding": "^0.1.13",
-    "supabase": "^1.93.0"
+    "supabase": "^2.72.8"
   }
 }
