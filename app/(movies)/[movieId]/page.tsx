@@ -38,7 +38,7 @@ const WatchMovie = ({ params }: MovieIdPageProps) => {
     e.preventDefault();
   };
 
-  if(Number.isNaN(movieIdToWatch) || movieIdToWatch <= 0) {
+  if(Number.isNaN(movieIdToWatch) || movieIdToWatch <= 0 || movieIdToWatch > 9) {
     redirect('/');
   }
 
