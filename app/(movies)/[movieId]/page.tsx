@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useMoviesContext } from '@/providers/MoviesProvider';
 import { Movie } from '@/types';
 
@@ -7,18 +7,21 @@ import { BiArrowBack } from 'react-icons/bi';
 import { BsPlayBtn } from 'react-icons/bs';
 import { HiOutlineChatBubbleBottomCenterText } from 'react-icons/hi2';
 import { useRoutes } from '@/hooks/useRoutes';
+import { redirect } from 'next/navigation';
 
 interface MovieIdPageProps {
-  params: {
-    movieId: number;
-  };
+  params: Promise<{
+    movieId: string;
+  }>;
 }
 
 const WatchMovie = ({ params }: MovieIdPageProps) => {
   const { movieData } = useMoviesContext();
   const [matchedMovie, setMatchedMovie] = useState<Movie | null>(null);
   const { handleBackBtn } = useRoutes();
-  const movieIdToWatch = params.movieId;
+
+  const {movieId} = use(params);
+  const movieIdToWatch = Number(movieId);
 
   useEffect(() => {
     const matchId = movieData?.find((movie) => movie.id == movieIdToWatch);
@@ -34,6 +37,11 @@ const WatchMovie = ({ params }: MovieIdPageProps) => {
   ) => {
     e.preventDefault();
   };
+
+  if(Number.isNaN(movieIdToWatch) || movieIdToWatch <= 0) {
+    redirect('/');
+  }
+
 
   return (
     <div
