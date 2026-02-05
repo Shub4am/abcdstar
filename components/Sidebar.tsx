@@ -33,7 +33,7 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
         icon: AiOutlineUser,
         label: 'User',
         active: pathName === 'User',
-        href: '/',
+        href: '/user',
         isHovered: isHovered,
       },
       {

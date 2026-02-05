@@ -1,9 +1,7 @@
 import Link from "next/link";
-import React from "react";
 import { FiFacebook } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
-import { AiFillApple, AiOutlineCheck } from "react-icons/ai";
-import { BiLogoPlayStore } from "react-icons/bi";
+import {  AiOutlineCheck } from "react-icons/ai";
 import Image from "next/image";
 
 const Footer = () => {
